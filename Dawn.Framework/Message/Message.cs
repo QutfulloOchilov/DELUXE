@@ -41,6 +41,10 @@ namespace Dawn.Framework.Message
         {
             get
             {
+                if (!choices.Any())
+                {
+                    return new ObservableCollection<MessageChoice> { new MessageChoice("OK") };
+                }
                 return choices;
             }
 

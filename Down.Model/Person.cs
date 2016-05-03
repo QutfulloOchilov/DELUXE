@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Dawn.Model
+namespace Dawn.Model.Entities
 {
     public abstract class Person : EntityBase
     {

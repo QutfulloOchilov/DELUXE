@@ -4,45 +4,47 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
-namespace Dawn.Model
+namespace Dawn.Model.Entities
 {
-    public class OrderDetail : EntityBase
+    [Table(nameof(BuyingDetail))]
+    public class BuyingDetail : EntityBase
     {
         private Guid orderId;
+        private Buying order;
+        private Product product;
+        private Guid productId;
+        private decimal count;
 
-        public Guid OrderId
+        [ForeignKey(typeof(Buying)), Column(nameof(BuyingId))]
+        public Guid BuyingId
         {
             get { return orderId; }
             set { orderId = value; }
         }
 
-        private Order order;
-
-        public Order Order
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
+        public Buying Buying
         {
             get { return order; }
             set { order = value; }
         }
 
-        private Product product;
-
+        [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public Product Product
         {
             get { return product; }
             set { product = value; }
         }
 
-        private Guid productId;
-
+        [ForeignKey(typeof(Product))]
         public Guid ProductId
         {
             get { return productId; }
             set { productId = value; }
         }
-
-
-        private decimal count;
 
         public decimal Count
         {

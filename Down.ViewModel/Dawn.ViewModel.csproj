@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dawn.Framework\Dawn.Framework.csproj">
+      <Project>{9D0130C0-C843-4B80-8827-0984DFDDB7A6}</Project>
+      <Name>Dawn.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Down.Model\Dawn.Model.csproj">
+      <Project>{3d4f2406-f116-4d17-90d2-5305b0961295}</Project>
+      <Name>Dawn.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

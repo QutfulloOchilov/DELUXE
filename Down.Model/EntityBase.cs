@@ -6,19 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Dawn.Framework;
 using Dawn.Framework.Message;
+using SQLite.Net.Attributes;
+using System.Collections.Generic;
 
 namespace Dawn.Model
 {
+
     public abstract class EntityBase : IEntity
     {
         private Guid id;
-        private ObservableCollection<Message> messages;
+        private List<Message> messages;
 
         protected EntityBase()
         {
-            messages = new ObservableCollection<Message>();
+            messages = new List<Message>();
         }
-
+        [Column(nameof(Id))]
         public Guid Id
         {
             get
@@ -31,9 +34,16 @@ namespace Dawn.Model
             set { id = value; }
         }
 
-
-
-        public ObservableCollection<Message> Messages { get { return messages; } set { messages = value; NotifyPropertyChanged(); } }
+        [Ignore]
+        public List<Message> Messages
+        {
+            get { return messages; }
+            set
+            {
+                messages = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         #region Notify
 

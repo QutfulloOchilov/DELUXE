@@ -2,13 +2,15 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dawn.Model;
 using System.Linq;
+using Dawn.Model.Entities;
+
 namespace TestModel
 {
     [TestClass]
     public class OrderTest
     {
         User admin;
-        Order order;
+        Buying order;
 
         [TestMethod]
         public void Order()
@@ -26,11 +28,11 @@ namespace TestModel
             order.Client = newClient;
             order.Date = DateTime.Now;
 
-            var firstOrderDetail = new OrderDetail
+            var firstOrderDetail = new BuyingDetail
             {
                 Count = 49,
-                Order = order,
-                OrderId = order.Id
+                Buying = order,
+                BuyingId = order.Id
             };
 
             var firstProduct = new Product { Name = "Black paper", Price = 20, Count = 2000 };
@@ -44,11 +46,11 @@ namespace TestModel
             firstOrderDetail.Product = firstProduct;
             firstOrderDetail.ProductId = firstProduct.Id;
 
-            var secondOrderDetail = new OrderDetail
+            var secondOrderDetail = new BuyingDetail
             {
                 Count = 20,
-                Order = order,
-                OrderId = order.Id,
+                Buying = order,
+                BuyingId = order.Id,
                 Product = secondProduct
             };
 
@@ -75,7 +77,7 @@ namespace TestModel
         public void TestInit()
         {
             admin = new User();
-            order = new Order(admin);
+            order = new Buying(admin);
         }
 
         [TestCleanup]
@@ -91,7 +93,7 @@ namespace TestModel
             admin = new User();
             admin.FirstName = "Qutfullo";
             admin.LastName = "Ochilov";
-            order = new Order(admin);
+            order = new Buying(admin);
         }
 
         #endregion
