@@ -9,33 +9,34 @@ using Dawn.Framework.Message;
 using SQLite.Net.Attributes;
 using System.Collections.Generic;
 
-namespace Dawn.Model
+namespace Dawn.Framework
 {
 
     public abstract class EntityBase : IEntity
     {
-        private Guid id;
-        private List<Message> messages;
+        private Guid guid;
+        private List<Dawn.Framework.Message.Message> messages;
 
         protected EntityBase()
         {
-            messages = new List<Message>();
+            messages = new List<Dawn.Framework.Message.Message>();
         }
-        [Column(nameof(Id))]
-        public Guid Id
+
+        [Column(nameof(Guid)), PrimaryKey()]
+        public Guid Guid
         {
             get
             {
-                if (id == null)
-                    return Guid.NewGuid();
+                if (guid.ToString().StartsWith("000"))
+                    guid = Guid.NewGuid();
 
-                return id;
+                return guid;
             }
-            set { id = value; }
+            set { guid = value; }
         }
 
         [Ignore]
-        public List<Message> Messages
+        public List<Dawn.Framework.Message.Message> Messages
         {
             get { return messages; }
             set
@@ -45,12 +46,14 @@ namespace Dawn.Model
             }
         }
 
+
         #region Notify
 
         /// <summary>
         /// Property Changed event
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         /// <summary>
         /// Fire the PropertyChanged event

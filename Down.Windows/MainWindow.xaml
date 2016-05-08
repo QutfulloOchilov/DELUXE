@@ -16,7 +16,8 @@
                        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                        Title="MainWindow" Height="350" Width="525"
                        WindowStartupLocation="CenterScreen"
-                       WindowState="Maximized">
+                       WindowState="Maximized"
+                       Name="uiMain">
     <controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -37,10 +38,13 @@
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
                     <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
+                             ItemsSource="{Binding Menus}"
                              PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp">
                         <ListBox.ItemTemplate>
-                            <DataTemplate DataType="domain:DemoItem">
-                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
+                            <DataTemplate>
+                              
+                                <TextBlock Name="uiTitle" Text="{Binding Title}" Margin="32 5 32 5"/>
+
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 
@@ -51,12 +55,20 @@
                 <controlsMD:ColorZone Padding="16" controlsMD:ShadowAssist.ShadowDepth="Depth2"
                                           Mode="PrimaryMid" DockPanel.Dock="Top">
                     <DockPanel>
-                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" HorizontalAlignment="Left"
                                       x:Name="MenuToggleButton"/>
+                        <controlsMD:PopupBox HorizontalAlignment="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="True">
+                            <StackPanel>
+                                <Button Content="Create demo data" Click="Button_Click"/>
+                            </StackPanel>
+                        </controlsMD:PopupBox>
                     </DockPanel>
+                    
+
                 </controlsMD:ColorZone>
-                <ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
+                <ContentControl  Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
             </DockPanel>
+
         </controlsMD:DrawerHost>
     </controlsMD:DialogHost>
 </controls:MetroWindow>

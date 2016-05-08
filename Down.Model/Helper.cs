@@ -14,6 +14,7 @@ namespace Dawn.Model
         {
             return new Type[]
             {
+                typeof(MenuItem),
                 typeof(User),
                 typeof(Client),
                 typeof(Product),

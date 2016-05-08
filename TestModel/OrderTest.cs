@@ -32,7 +32,7 @@ namespace TestModel
             {
                 Count = 49,
                 Buying = order,
-                BuyingId = order.Id
+                BuyingId = order.Guid
             };
 
             var firstProduct = new Product { Name = "Black paper", Price = 20, Count = 2000 };
@@ -44,13 +44,13 @@ namespace TestModel
             secondProduct.Formulas.Add(firstFormula);
 
             firstOrderDetail.Product = firstProduct;
-            firstOrderDetail.ProductId = firstProduct.Id;
+            firstOrderDetail.ProductId = firstProduct.Guid;
 
             var secondOrderDetail = new BuyingDetail
             {
                 Count = 20,
                 Buying = order,
-                BuyingId = order.Id,
+                BuyingId = order.Guid,
                 Product = secondProduct
             };
 

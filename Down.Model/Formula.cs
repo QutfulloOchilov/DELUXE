@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
+using Dawn.Framework;
+
 namespace Dawn.Model.Entities
 {
     [Table(nameof(Formula))]
@@ -54,7 +56,7 @@ namespace Dawn.Model.Entities
             }
         }
 
-        [Column(nameof(ProductId))]
+        [ForeignKey(typeof(Product)), Column(nameof(ProductId))]
         public Guid ProductId
         {
             get { return productId; }

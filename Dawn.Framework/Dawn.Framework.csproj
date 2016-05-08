@@ -34,10 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collection\NewRowCollection.cs" />
+    <Compile Include="Collection\ObservableNotifyPropertyChangedCollection.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\MessageChoice.cs" />
     <Compile Include="Message\Message.cs" />
     <Compile Include="Message\MessageEventArgs.cs" />
+    <Compile Include="OpenPageEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

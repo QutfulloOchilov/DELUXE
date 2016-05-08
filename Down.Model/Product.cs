@@ -6,13 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
+using Dawn.Framework;
 
 namespace Dawn.Model.Entities
 {
     [Table(nameof(Product))]
     public class Product : EntityBase
     {
+        private string id;
         private string name;
+        private string description;
         private decimal price;
         private decimal count;
         private List<Formula> formulas;
@@ -22,11 +25,30 @@ namespace Dawn.Model.Entities
         {
             formulas = new List<Formula>();
         }
+
+        [Column(nameof(ID))]
+        public string ID
+        {
+            get
+            {
+                return id;
+            }
+            set { id = value; }
+        }
+
+
         [Column(nameof(Name))]
         public string Name
         {
             get { return name; }
             set { name = value; }
+        }
+
+        [Column(nameof(Description))]
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
         }
 
         [Column(nameof(Price))]

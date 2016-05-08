@@ -1,4 +1,5 @@
-﻿using Dawn.Model;
+﻿using Dawn.Framework;
+using Dawn.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace TestModel
         [TestMethod]
         public void EntityBase_IdTest()
         {
-            Assert.IsNotNull(new TestEntityBase().Id, "If create new TestEntityBase Id should be not null or empty id");
+            Assert.IsNotNull(new TestEntityBase().Guid, "If create new TestEntityBase Id should be not null or empty id");
         }
 
         public class TestEntityBase : EntityBase

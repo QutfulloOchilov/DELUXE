@@ -1,12 +1,16 @@
-﻿using Dawn.Framework.Message;
-using Dawn.ViewModels;
+﻿using Dawn.Framework;
+using Dawn.Framework.Message;
+using Dawn.ModelView;
+using Dawn.Windows.Pages;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using SQLite.Net.Platform.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,19 +28,75 @@ namespace Dawn.Windows
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : INotifyPropertyChanged
     {
-        ViewModel viewModel;
+        private ViewModel viewModel;
+
+        public ViewModel ViewModel
+        {
+            get
+            {
+                if (viewModel == null)
+                {
+                    viewModel = new ViewModel(new SQLitePlatformWin32(), DatabasePath, File.Exists(DatabasePath));
+                }
+                return viewModel;
+            }
+            set { viewModel = value; }
+        }
+
         public string DatabasePath { get; set; }
+
+
+
         public MainWindow()
         {
             DatabasePath = "DatabaseDawn.db";
-            viewModel = new ViewModel(new SQLitePlatformWin32(), DatabasePath, File.Exists(DatabasePath));
-            this.DataContext = viewModel;
+            AddMenuItem();
+            InitMenu();
+            this.DataContext = ViewModel;
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             MessageManager.ShowMessage += MessageManager_ShowMessage;
+            OpenPageManager.OpenPage += OpenPageManager_OpenPage;
 
+        }
+
+        private void InitMenu()
+        {
+            var menuItems = new List<dynamic>();
+            foreach (dynamic item in ViewModel.GetMenuItems())
+            {
+                var contentString = item.ContentInString.ToString();
+                if (contentString != null)
+                {
+                    Type type = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(t => t.Name == contentString.ToString());
+                    item.Content = Activator.CreateInstance(type);
+                }
+                menuItems.Add(item);
+            }
+            ViewModel.SetPageForManuItem(menuItems);
+        }
+
+
+        private void OpenPageManager_OpenPage(OpenPageEventArgs e)
+        {
+
+        }
+
+        private void AddMenuItem()
+        {
+            var dicMenuItem = new Dictionary<string, object>();
+            dicMenuItem.Add("Main", new Main { DataContext = ViewModel });
+            dicMenuItem.Add("Add new product", new NewProduct { DataContext = ViewModel });
+            dicMenuItem.Add("New Order", new NewOrder { DataContext = ViewModel });
+            dicMenuItem.Add("View Order", new ViewOrder { DataContext = ViewModel });
+            dicMenuItem.Add("Change order", new ChangeOrder { DataContext = ViewModel });
+
+            foreach (var item in dicMenuItem)
+            {
+                ViewModel.AddMenuItem(item.Key, item.Value);
+            }
         }
 
         private async void MessageManager_ShowMessage(MessageManagerEventArgs e)
@@ -72,6 +132,12 @@ namespace Dawn.Windows
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             ShowLoginAsync();
+
+        }
+
+        private void OpenMenu(object menu)
+        {
+
         }
 
         private async void ShowLoginAsync()
@@ -100,6 +166,32 @@ namespace Dawn.Windows
             //};
 
             //await DialogHost.Show(sampleMessageDialog, "RootDialog");
+        }
+
+        #region Notify
+
+        /// <summary>
+        /// Property Changed event
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Fire the PropertyChanged event
+        /// </summary>
+        /// <param name="propertyName">Name of the property that changed (defaults from CallerMemberName)</param>
+        protected void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.CreateDemoData();
         }
     }
 }

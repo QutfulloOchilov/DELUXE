@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
+using Dawn.Framework;
 
 namespace Dawn.Model.Entities
 {

@@ -26,6 +26,11 @@ namespace Dawn.Model.Entities
             set { orders = value; }
         }
 
+        public override string ToString()
+        {
+            return ID;
+        }
+
 
     }
 }

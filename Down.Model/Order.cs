@@ -8,10 +8,11 @@ using System.Collections.ObjectModel;
 using Dawn.Framework.Message;
 using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
+using Dawn.Framework;
 
 namespace Dawn.Model.Entities
 {
-    [Table(nameof(Buying) )]
+    [Table(nameof(Buying))]
     public class Buying : EntityBase
     {
         private List<BuyingDetail> orderDetails;
@@ -34,6 +35,9 @@ namespace Dawn.Model.Entities
             get { return orderDetails; }
             set { orderDetails = value; NotifyPropertyChanged(); }
         }
+
+        [Ignore]
+        public ObservableCollection<BuyingDetail> OrderDetailsInUI => new ObservableCollection<BuyingDetail>(OrderDetails);
 
         [ForeignKey(typeof(Client)), Column(nameof(ClientId))]
         public Guid ClientId

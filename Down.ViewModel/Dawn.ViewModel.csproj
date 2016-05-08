@@ -8,7 +8,7 @@
     <ProjectGuid>{B4172BCE-85A6-4C33-9E6A-509C41817365}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dawn.ViewModel</RootNamespace>
+    <RootNamespace>Dawn.ModelView</RootNamespace>
     <AssemblyName>Dawn.ViewModel</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
