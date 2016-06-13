@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Dawn.Framework.Message;
+using Deluxe.Framework.Message;
 using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
-using Dawn.Framework;
+using Deluxe.Framework;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     [Table(nameof(Buying))]
     public class Buying : EntityBase

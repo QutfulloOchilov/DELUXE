@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Dawn.Windows.Controls.Product"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dawn.Windows.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding Icon}" Width="50" Height="50"/>
+            <TextBlock Text="{Binding Code}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{Binding Name}"/>
+            <TextBlock Text="{Binding Count}"/>
+            <TextBlock Text="{Binding Price}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

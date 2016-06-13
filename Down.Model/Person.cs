@@ -1,11 +1,11 @@
-﻿using Dawn.Framework;
+﻿using Deluxe.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     public abstract class Person : EntityBase
     {

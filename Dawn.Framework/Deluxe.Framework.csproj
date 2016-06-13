@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4172BCE-85A6-4C33-9E6A-509C41817365}</ProjectGuid>
+    <ProjectGuid>{9D0130C0-C843-4B80-8827-0984DFDDB7A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dawn.ModelView</RootNamespace>
-    <AssemblyName>Dawn.ViewModel</AssemblyName>
+    <RootNamespace>Deluxe.Framework</RootNamespace>
+    <AssemblyName>Deluxe.Framework</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,7 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="Collection\NewRowCollection.cs" />
+    <Compile Include="Collection\ObservableNotifyPropertyChangedCollection.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="Message\IMessage.cs" />
+    <Compile Include="Message\MessageChoice.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="Message\MessageEventArgs.cs" />
+    <Compile Include="OpenPageEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,16 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dawn.Framework\Dawn.Framework.csproj">
-      <Project>{9D0130C0-C843-4B80-8827-0984DFDDB7A6}</Project>
-      <Name>Dawn.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Down.Model\Dawn.Model.csproj">
-      <Project>{3d4f2406-f116-4d17-90d2-5305b0961295}</Project>
-      <Name>Dawn.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

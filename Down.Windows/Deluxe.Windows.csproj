@@ -109,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +122,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\EntityDataGrid.cs" />
+    <Compile Include="Controls\Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -203,13 +210,17 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dawn.Framework\Dawn.Framework.csproj">
+    <ProjectReference Include="..\Dawn.Framework\Deluxe.Framework.csproj">
       <Project>{9d0130c0-c843-4b80-8827-0984dfddb7a6}</Project>
-      <Name>Dawn.Framework</Name>
+      <Name>Deluxe.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Down.ViewModel\Dawn.ViewModel.csproj">
+    <ProjectReference Include="..\Deluxe.WpfControls\Deluxe.WpfControls.csproj">
+      <Project>{81754022-48fa-43f1-b0ce-82564fb04f69}</Project>
+      <Name>Deluxe.WpfControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Down.ViewModel\Deluxe.ViewModel.csproj">
       <Project>{B4172BCE-85A6-4C33-9E6A-509C41817365}</Project>
-      <Name>Dawn.ViewModel</Name>
+      <Name>Deluxe.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

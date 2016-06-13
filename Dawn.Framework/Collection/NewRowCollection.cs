@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dawn.Framework.Collection
+namespace Deluxe.Framework.Collection
 {
     public class NewRowCollection<T> : ObservableNotifyPropertyChangedCollection<T> where T : EntityBase
     {
         public NewRowCollection()
         {
-            SetNewRow();
+            
         }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Dawn.Framework.Collection
 
         void SetNewRow()
         {
-            NewRow = (EntityBase)Activator.CreateInstance<T>();
+            NewRow = (T)Activator.CreateInstance(typeof(T));
 
             NewRow.PropertyChanged += NewRow_PropertyChanged;
 
@@ -30,6 +30,7 @@ namespace Dawn.Framework.Collection
         void NewRow_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             NewRow.PropertyChanged -= NewRow_PropertyChanged;
+
             SetNewRow();
         }
 

@@ -13,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Deluxe.Windows.Pages
+namespace Deluxe.WpfControls
 {
     /// <summary>
-    /// Interaction logic for ChangeOrder.xaml
+    /// Interaction logic for NavigationTile.xaml
     /// </summary>
-    public partial class ChangeOrder : UserControl
+    public partial class NavigationTile : UserControl
     {
-        public ChangeOrder()
+        public NavigationTile()
         {
             InitializeComponent();
-        }
-        public override string ToString()
-        {
-            return nameof(ChangeOrder);
         }
     }
 }

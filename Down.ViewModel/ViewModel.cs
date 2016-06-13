@@ -5,22 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using SQLite.Net.Interop;
-using Dawn.Model;
-using Dawn.Model.Entities;
-using Dawn.Framework.Message;
+using Deluxe.Model;
+using Deluxe.Model.Entities;
+using Deluxe.Framework.Message;
 using System.Collections.ObjectModel;
 using SQLiteNetExtensions.Extensions;
+using Deluxe.Framework.Collection;
 
-namespace Dawn.ModelView
+namespace Deluxe.ModelView
 {
     public class ViewModel : INotifyPropertyChanged
     {
 
-        private DawnSQLiteConnection connection;
+        private DeluxeSQLiteConnection connection;
         private User currentUser;
         private ObservableCollection<MenuItem> menus;
         private ObservableCollection<Client> clients;
-        private ObservableCollection<BuyingDetail> orderDetails;
+        private NewRowCollection<BuyingDetail> orderDetails;
+        private ObservableCollection<Product> products;
 
         public ViewModel(ISQLitePlatform litePlatform, string databasePath, bool fileExists)
         {
@@ -28,11 +30,11 @@ namespace Dawn.ModelView
             {
                 if (!fileExists)
                 {
-                    connection = new DawnSQLiteConnection(litePlatform, databasePath, true);
+                    connection = new DeluxeSQLiteConnection(litePlatform, databasePath, true);
                 }
                 else
                 {
-                    connection = new DawnSQLiteConnection(litePlatform, databasePath);
+                    connection = new DeluxeSQLiteConnection(litePlatform, databasePath);
                 }
 
                 InitFilds();
@@ -51,14 +53,15 @@ namespace Dawn.ModelView
         {
             menus = new ObservableCollection<MenuItem>();
             clients = new ObservableCollection<Client>();
-            orderDetails = new ObservableCollection<BuyingDetail>();
+            orderDetails = new NewRowCollection<BuyingDetail>();
+            products = new ObservableCollection<Product>();
 
         }
 
         /// <summary>
         /// SQLite connection
         /// </summary>
-        public DawnSQLiteConnection Connection
+        public DeluxeSQLiteConnection Connection
         {
             get { return connection; }
             set { connection = value; }
@@ -295,15 +298,35 @@ namespace Dawn.ModelView
         public void CreateNewOrder(dynamic client)
         {
             var newOrder = new Buying(CurrentUser) { Client = (Client)client };
-            OrderDetails = new ObservableCollection<BuyingDetail>();
+            OrderDetails = new NewRowCollection<BuyingDetail>();
             newOrder.OrderDetails = new List<BuyingDetail>(OrderDetails);
         }
 
-        public ObservableCollection<BuyingDetail> OrderDetails
+        public NewRowCollection<BuyingDetail> OrderDetails
         {
             get { return orderDetails; }
             set { orderDetails = value; }
         }
+
+        public ObservableCollection<Product> Products
+        {
+            get
+            {
+                if (!products.Any())
+                {
+                    products = new ObservableCollection<Product>(Connection.GetAllWithChildren<Product>(null, true));
+                }
+                return products;
+            }
+            set
+            {
+                products = value;
+            }
+
+        }
+
+        private Product selectedProduct;
+        public Product SelectedProduct { get { return selectedProduct; } set { selectedProduct = value; NotifyPropertyChanged(); } }
 
 
         #region Notify

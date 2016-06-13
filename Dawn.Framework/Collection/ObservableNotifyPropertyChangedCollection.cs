@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Collections.Specialized;
 
-namespace Dawn.Framework.Collection
+namespace Deluxe.Framework.Collection
 {
     public class ObservableNotifyPropertyChangedCollection<T> : ObservableCollection<T>
     {

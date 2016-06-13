@@ -55,13 +55,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dawn.Framework\Dawn.Framework.csproj">
+    <ProjectReference Include="..\Dawn.Framework\Deluxe.Framework.csproj">
       <Project>{9D0130C0-C843-4B80-8827-0984DFDDB7A6}</Project>
-      <Name>Dawn.Framework</Name>
+      <Name>Deluxe.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Down.Model\Dawn.Model.csproj">
+    <ProjectReference Include="..\Down.Model\Deluxe.Model.csproj">
       <Project>{3d4f2406-f116-4d17-90d2-5305b0961295}</Project>
-      <Name>Dawn.Model</Name>
+      <Name>Deluxe.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

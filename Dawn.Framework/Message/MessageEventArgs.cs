@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dawn.Framework.Message
+namespace Deluxe.Framework.Message
 {
     public class MessageManagerEventArgs : EventArgs
     {

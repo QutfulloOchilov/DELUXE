@@ -1,4 +1,4 @@
-﻿using Dawn.Framework;
+﻿using Deluxe.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Dawn.Model
+namespace Deluxe.Model
 {
     public class OpenMenuCommand : BaseCommand
     {

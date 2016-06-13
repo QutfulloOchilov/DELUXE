@@ -1,7 +1,7 @@
-﻿using Dawn.Framework;
-using Dawn.Framework.Message;
-using Dawn.ModelView;
-using Dawn.Windows.Pages;
+﻿using Deluxe.Framework;
+using Deluxe.Framework.Message;
+using Deluxe.ModelView;
+using Deluxe.Windows.Pages;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using SQLite.Net.Platform.Win32;
@@ -23,7 +23,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dawn.Windows
+namespace Deluxe.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -51,7 +51,7 @@ namespace Dawn.Windows
 
         public MainWindow()
         {
-            DatabasePath = "DatabaseDawn.db";
+            DatabasePath = "DatabaseDeluxe.db";
             AddMenuItem();
             InitMenu();
             this.DataContext = ViewModel;

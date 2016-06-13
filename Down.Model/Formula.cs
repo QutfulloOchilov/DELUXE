@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
-using Dawn.Framework;
+using Deluxe.Framework;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     [Table(nameof(Formula))]
     public class Formula : EntityBase

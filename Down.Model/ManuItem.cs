@@ -8,7 +8,7 @@ using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System.Windows.Input;
 
-namespace Dawn.Model
+namespace Deluxe.Model
 {
     [Table(nameof(MenuItem))]
     public class MenuItem : INotifyPropertyChanged

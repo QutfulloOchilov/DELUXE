@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace Dawn.Framework.Message
+namespace Deluxe.Framework.Message
 {
     public interface IMessage : INotifyPropertyChanged
     {

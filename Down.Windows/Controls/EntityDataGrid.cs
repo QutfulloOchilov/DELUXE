@@ -1,5 +1,5 @@
-﻿using Dawn.Framework;
-using Dawn.Framework.Collection;
+﻿using Deluxe.Framework;
+using Deluxe.Framework.Collection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Collections;
 
-namespace Dawn.Windows.Controls
+namespace Deluxe.Windows.Controls
 {
     public class EntityDataGrid : DataGrid
     {
@@ -30,15 +30,6 @@ namespace Dawn.Windows.Controls
         {
             NewRowCollection = new NewRowCollection<EntityBase>();
             SetBinding(ItemsSourceProperty, new Binding(nameof(NewRowCollection)) { Source = this });
-        }
-
-        protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
-        {
-            if (ItemsSource != null)
-            {
-                //SetNewRowOrder(NewRowCollection);
-                //NewRowCollection.CollectionModified += Collection_CollectionModified; //
-            }
         }
 
     }

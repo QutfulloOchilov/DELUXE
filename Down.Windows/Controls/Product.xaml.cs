@@ -13,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Deluxe.Windows.Pages
+namespace Dawn.Windows.Controls
 {
     /// <summary>
-    /// Interaction logic for ChangeOrder.xaml
+    /// Interaction logic for Product.xaml
     /// </summary>
-    public partial class ChangeOrder : UserControl
+    public partial class Product : UserControl
     {
-        public ChangeOrder()
+        public Product()
         {
             InitializeComponent();
-        }
-        public override string ToString()
-        {
-            return nameof(ChangeOrder);
         }
     }
 }

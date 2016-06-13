@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
-using Dawn.Framework;
+using Deluxe.Framework;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     [Table(nameof(Product))]
     public class Product : EntityBase
@@ -62,7 +62,7 @@ namespace Dawn.Model.Entities
         public decimal Count
         {
             get { return count; }
-            set { count = value; }
+            set { count = value;NotifyPropertyChanged(); }
         }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
@@ -77,6 +77,11 @@ namespace Dawn.Model.Entities
         {
             get { return buyingDetails; }
             set { buyingDetails = value; }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
     }

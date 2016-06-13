@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D0130C0-C843-4B80-8827-0984DFDDB7A6}</ProjectGuid>
+    <ProjectGuid>{3D4F2406-F116-4D17-90D2-5305B0961295}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dawn.Framework</RootNamespace>
-    <AssemblyName>Dawn.Framework</AssemblyName>
+    <RootNamespace>Dawn.Model</RootNamespace>
+    <AssemblyName>Dawn.Model</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,16 +34,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Collection\NewRowCollection.cs" />
-    <Compile Include="Collection\ObservableNotifyPropertyChangedCollection.cs" />
-    <Compile Include="EntityBase.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="Message\IMessage.cs" />
-    <Compile Include="Message\MessageChoice.cs" />
-    <Compile Include="Message\Message.cs" />
-    <Compile Include="Message\MessageEventArgs.cs" />
-    <Compile Include="OpenPageEventArgs.cs" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Dawn.Framework\Deluxe.Framework.csproj">
+      <Project>{9d0130c0-c843-4b80-8827-0984dfddb7a6}</Project>
+      <Name>Deluxe.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseCommand.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Formula.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="ManuItem.cs" />
+    <Compile Include="OpenMenuCommand.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetail.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLiteConnection.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -65,6 +75,9 @@
     <Reference Include="SQLiteNetExtensionsAsync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLiteNetExtensions.Async.1.3.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensionsAsync.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

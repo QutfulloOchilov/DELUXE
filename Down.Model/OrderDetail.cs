@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
-using Dawn.Framework;
+using Deluxe.Framework;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     [Table(nameof(BuyingDetail))]
     public class BuyingDetail : EntityBase
@@ -47,6 +47,9 @@ namespace Dawn.Model.Entities
             set { productId = value; }
         }
 
+        [Ignore]
+        public decimal TotalPrice { get { return CalculetOrderDetail(); } }
+
         public decimal Count
         {
             get { return count; }
@@ -54,17 +57,21 @@ namespace Dawn.Model.Entities
             {
                 count = value;
                 NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(TotalPrice));
             }
         }
 
+
         public decimal GetPrice()
         {
+            if (Product == null)
+                return 0;
             decimal result = Product.Price;
             if (Product.Formulas.Any())
             {
                 foreach (Formula formula in Product.Formulas)
                 {
-                    if (formula.To >= Count)
+                    if (formula.To >= count)
                     {
                         result = formula.Price;
                     }
@@ -75,8 +82,10 @@ namespace Dawn.Model.Entities
 
         public decimal CalculetOrderDetail()
         {
-            return Count * GetPrice();
+            return count * GetPrice();
         }
+
+
 
     }
 }

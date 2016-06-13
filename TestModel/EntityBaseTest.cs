@@ -1,5 +1,5 @@
-﻿using Dawn.Framework;
-using Dawn.Model;
+﻿using Deluxe.Framework;
+using Deluxe.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

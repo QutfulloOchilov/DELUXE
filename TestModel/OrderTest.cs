@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Dawn.Model;
+using Deluxe.Model;
 using System.Linq;
-using Dawn.Model.Entities;
+using Deluxe.Model.Entities;
 
 namespace TestModel
 {

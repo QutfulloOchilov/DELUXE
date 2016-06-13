@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dawn.Windows.Pages
+namespace Deluxe.Windows.Pages
 {
     /// <summary>
     /// Interaction logic for NewProduct.xaml

@@ -4,22 +4,22 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dawn.Framework;
-using Dawn.Framework.Message;
+using Deluxe.Framework;
+using Deluxe.Framework.Message;
 using SQLite.Net.Attributes;
 using System.Collections.Generic;
 
-namespace Dawn.Framework
+namespace Deluxe.Framework
 {
 
-    public abstract class EntityBase : IEntity
+    public class EntityBase : IEntity
     {
         private Guid guid;
-        private List<Dawn.Framework.Message.Message> messages;
+        private List<Deluxe.Framework.Message.Message> messages;
 
-        protected EntityBase()
+        public EntityBase()
         {
-            messages = new List<Dawn.Framework.Message.Message>();
+            messages = new List<Deluxe.Framework.Message.Message>();
         }
 
         [Column(nameof(Guid)), PrimaryKey()]
@@ -36,7 +36,7 @@ namespace Dawn.Framework
         }
 
         [Ignore]
-        public List<Dawn.Framework.Message.Message> Messages
+        public List<Deluxe.Framework.Message.Message> Messages
         {
             get { return messages; }
             set

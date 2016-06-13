@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Dawn.Windows.Pages
+namespace Deluxe.Windows.Pages
 {
     public class BasePage : UserControl
     {

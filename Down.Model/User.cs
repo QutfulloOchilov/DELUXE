@@ -7,7 +7,7 @@ using SQLiteNetExtensionsAsync;
 using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
 
-namespace Dawn.Model.Entities
+namespace Deluxe.Model.Entities
 {
     [Table(nameof(User))]
     public class User : Person

@@ -1,4 +1,4 @@
-﻿using Dawn.Model.Entities;
+﻿using Deluxe.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dawn.Model
+namespace Deluxe.Model
 {
     public class Helper
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dawn.Framework.Message
+namespace Deluxe.Framework.Message
 {
     public class MessageChoice
     {
