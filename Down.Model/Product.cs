@@ -8,6 +8,7 @@ using SQLiteNetExtensions.Attributes;
 using SQLite.Net.Attributes;
 using Deluxe.Framework;
 
+
 namespace Deluxe.Model.Entities
 {
     [Table(nameof(Product))]
@@ -20,6 +21,7 @@ namespace Deluxe.Model.Entities
         private decimal count;
         private List<Formula> formulas;
         private List<BuyingDetail> buyingDetails;
+        private string icon;
 
         public Product()
         {
@@ -35,7 +37,6 @@ namespace Deluxe.Model.Entities
             }
             set { id = value; }
         }
-
 
         [Column(nameof(Name))]
         public string Name
@@ -62,7 +63,7 @@ namespace Deluxe.Model.Entities
         public decimal Count
         {
             get { return count; }
-            set { count = value;NotifyPropertyChanged(); }
+            set { count = value; NotifyPropertyChanged(); }
         }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
@@ -77,6 +78,16 @@ namespace Deluxe.Model.Entities
         {
             get { return buyingDetails; }
             set { buyingDetails = value; }
+        }
+
+        public string Icon
+        {
+            get { return icon; }
+            set
+            {
+                icon = value;
+                NotifyPropertyChanged();
+            }
         }
 
         public override string ToString()

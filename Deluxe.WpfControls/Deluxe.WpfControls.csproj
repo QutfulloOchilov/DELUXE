@@ -58,6 +58,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\StringToBitmapConverter.cs" />
     <Compile Include="NavigationTile.xaml.cs">
       <DependentUpon>NavigationTile.xaml</DependentUpon>
     </Compile>

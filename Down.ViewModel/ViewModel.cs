@@ -297,9 +297,12 @@ namespace Deluxe.ModelView
 
         public void CreateNewOrder(dynamic client)
         {
+            NewOrderDetail = new BuyingDetail();
             var newOrder = new Buying(CurrentUser) { Client = (Client)client };
             OrderDetails = new NewRowCollection<BuyingDetail>();
             newOrder.OrderDetails = new List<BuyingDetail>(OrderDetails);
+            IsSelectedCustomer = true;
+
         }
 
         public NewRowCollection<BuyingDetail> OrderDetails
@@ -326,7 +329,44 @@ namespace Deluxe.ModelView
         }
 
         private Product selectedProduct;
-        public Product SelectedProduct { get { return selectedProduct; } set { selectedProduct = value; NotifyPropertyChanged(); } }
+        public Product SelectedProduct
+        {
+            get
+            {
+                return selectedProduct;
+            }
+            set
+            {
+                selectedProduct = value;
+                NotifyPropertyChanged();
+                NewOrderDetail?.GetPrice();
+            }
+        }
+
+        private BuyingDetail newOrderDetail;
+
+        public BuyingDetail NewOrderDetail
+        {
+            get { return newOrderDetail; }
+            set
+            {
+                newOrderDetail = value; ;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged(nameof(newOrderDetail.CurrentFormula));
+            }
+        }
+
+        private bool isSelectedCustomer;
+
+        public bool IsSelectedCustomer
+        {
+            get
+            {
+                return isSelectedCustomer;
+            }
+            set { isSelectedCustomer = value; NotifyPropertyChanged(); }
+        }
+
 
 
         #region Notify

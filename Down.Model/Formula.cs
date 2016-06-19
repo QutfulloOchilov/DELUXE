@@ -70,5 +70,10 @@ namespace Deluxe.Model.Entities
             set { product = value; }
         }
 
+        public override string ToString()
+        {
+            return $"From {From}/ To {To}/ Price {Price}";
+        }
+
     }
 }

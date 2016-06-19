@@ -20,6 +20,9 @@ namespace Deluxe.Model.Entities
         private Client client;
         private User user;
 
+        /// <summary>
+        /// Who sell
+        /// </summary>
         public Buying(User user)
         {
             orderDetails = new List<BuyingDetail>();

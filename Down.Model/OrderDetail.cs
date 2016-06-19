@@ -18,6 +18,7 @@ namespace Deluxe.Model.Entities
         private Product product;
         private Guid productId;
         private decimal count;
+        private Formula currentFormula;
 
         [ForeignKey(typeof(Buying)), Column(nameof(BuyingId))]
         public Guid BuyingId
@@ -50,6 +51,26 @@ namespace Deluxe.Model.Entities
         [Ignore]
         public decimal TotalPrice { get { return CalculetOrderDetail(); } }
 
+        [Ignore]
+        public Formula CurrentFormula
+        {
+            get
+            {
+
+                if (currentFormula==null)
+                {
+                    currentFormula = Product?.Formulas[0];
+                }
+                return currentFormula;
+            }
+            set
+            {
+                currentFormula = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         public decimal Count
         {
             get { return count; }
@@ -60,6 +81,7 @@ namespace Deluxe.Model.Entities
                 NotifyPropertyChanged(nameof(TotalPrice));
             }
         }
+
 
 
         public decimal GetPrice()
@@ -74,6 +96,8 @@ namespace Deluxe.Model.Entities
                     if (formula.To >= count)
                     {
                         result = formula.Price;
+                        CurrentFormula = formula;
+                        break;
                     }
                 }
             }

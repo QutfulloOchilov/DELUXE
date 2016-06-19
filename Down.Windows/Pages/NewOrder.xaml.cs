@@ -52,5 +52,11 @@ namespace Deluxe.Windows.Pages
         {
             return nameof(NewOrder);
         }
+
+        
+        private void uiAddButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
